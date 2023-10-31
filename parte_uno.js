@@ -108,65 +108,73 @@ const jobs = [
     title: "English Teacher Abroad",
     location: "US, NY, Saint Bonaventure",
   },
-]
+];
 
-const spacesDelete = function(str){
- const strArray = str.split(" ");
- const cleanArray = [];
- for(let i=0; i<strArray.length; i++)
-  if(strArray[i]!=="")
-   cleanArray.push(strArray[i]);
- return cleanArray.join(" ");
-}
+const spacesDelete = function (str) {
+  const strArray = str.split(" ");
+  const cleanArray = [];
+  for (let i = 0; i < strArray.length; i++)
+    if (strArray[i] !== "") cleanArray.push(strArray[i]);
+  return cleanArray.join(" ");
+};
 
-const specialCharRemove = function (str){
- specialChar = ['.','-','/','(',')',','];
- let cleanStr="";
- for(let i=0; i<str.length; i++){
-  if(specialChar.includes(str.charAt(i)))
-   cleanStr += " ";
-  else
-   cleanStr += str.charAt(i);
- }
- return cleanStr;
-}
-
-const jobsSearching = function(titleStr, locationStr){
- const jobsFound = [];
-
- for(let i=0; i<jobs.length; i++){
-  currentTitle = spacesDelete(specialCharRemove(jobs[i].title)).toLowerCase();
-  currentLocation = spacesDelete(specialCharRemove(jobs[i].location)).toLowerCase();
- 
-  if(currentTitle.includes(titleStr) && currentLocation.includes(locationStr)){
-   jobsFound.push(jobs[i]);
+const specialCharRemove = function (str) {
+  specialChar = [".", "-", "/", "(", ")", ","];
+  let cleanStr = "";
+  for (let i = 0; i < str.length; i++) {
+    if (specialChar.includes(str.charAt(i))) cleanStr += " ";
+    else cleanStr += str.charAt(i);
   }
- }
+  return cleanStr;
+};
 
- const resultObj = {
-  result: jobsFound,
-  count: jobsFound.length,
- }
- return resultObj;
-}
+const jobsSearching = function (titleStr, locationStr) {
+  const jobsFound = [];
 
-const inputTitle="l1";
-const inputLocation="us";
+  for (let i = 0; i < jobs.length; i++) {
+    currentTitle = spacesDelete(specialCharRemove(jobs[i].title)).toLowerCase();
+    currentLocation = spacesDelete(
+      specialCharRemove(jobs[i].location)
+    ).toLowerCase();
+
+    if (
+      currentTitle.includes(titleStr) &&
+      currentLocation.includes(locationStr)
+    ) {
+      jobsFound.push(jobs[i]);
+    }
+  }
+
+  const resultObj = {
+    result: jobsFound,
+    count: jobsFound.length,
+  };
+  return resultObj;
+};
+
+const inputTitle = "l1";
+const inputLocation = "us";
 const title = spacesDelete(specialCharRemove(inputTitle)).toLowerCase();
 const location = spacesDelete(specialCharRemove(inputLocation)).toLowerCase();
 
-if(title!=="" && location!==""){
- const searchingResult = jobsSearching(title, location);
- if(searchingResult.count===0){
-  console.log("\nNessun risultato corrispondente alla ricerca...");
- } else {
-    console.log("\n La ricerca ha prodotto " +
-                 searchingResult.count + " risultati:\n\n");
-    for(let i=0; i<searchingResult.count; i++){
-     console.log(" Title: " + searchingResult.result[i].title +
-                "\n Location: " + searchingResult.result[i].location+ "\n");
+if (title !== "" && location !== "") {
+  const searchingResult = jobsSearching(title, location);
+  if (searchingResult.count === 0) {
+    console.log("\nNessun risultato corrispondente alla ricerca...");
+  } else {
+    console.log(
+      "\n La ricerca ha prodotto " + searchingResult.count + " risultati:\n\n"
+    );
+    for (let i = 0; i < searchingResult.count; i++) {
+      console.log(
+        " Title: " +
+          searchingResult.result[i].title +
+          "\n Location: " +
+          searchingResult.result[i].location +
+          "\n"
+      );
     }
- }
+  }
 } else {
-   console.log("\nPer favore inserire sia 'titolo' che 'regione'!");
+  console.log("\nPer favore inserire sia 'titolo' che 'regione'!");
 }

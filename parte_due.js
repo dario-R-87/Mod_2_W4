@@ -96,75 +96,83 @@ const jobs = [
     title: "English Teacher Abroad",
     location: "US, NY, Saint Bonaventure",
   },
-]
+];
 
-const spacesDelete = function(str){
- const strArray = str.split(" ");
- const cleanArray = [];
- for(let i=0; i<strArray.length; i++)
-  if(strArray[i]!=="")
-   cleanArray.push(strArray[i]);
- return cleanArray.join(" ");
-}
+const spacesDelete = function (str) {
+  const strArray = str.split(" ");
+  const cleanArray = [];
+  for (let i = 0; i < strArray.length; i++)
+    if (strArray[i] !== "") cleanArray.push(strArray[i]);
+  return cleanArray.join(" ");
+};
 
-const specialCharRemove = function (str){
- specialChar = ['.','-','/','(',')',','];
- let cleanStr="";
- for(let i=0; i<str.length; i++){
-  if(specialChar.includes(str.charAt(i)))
-   cleanStr += " ";
-  else
-   cleanStr += str.charAt(i);
- }
- return cleanStr;
-}
-
-const jobsSearching = function(titleStr, locationStr){
- const jobsFound = [];
-
- for(let i=0; i<jobs.length; i++){
-  currentTitle = spacesDelete(specialCharRemove(jobs[i].title)).toLowerCase();
-  currentLocation = spacesDelete(specialCharRemove(jobs[i].location)).toLowerCase();
- 
-  if(currentTitle.includes(titleStr) && currentLocation.includes(locationStr)){
-   jobsFound.push(jobs[i]);
+const specialCharRemove = function (str) {
+  specialChar = [".", "-", "/", "(", ")", ","];
+  let cleanStr = "";
+  for (let i = 0; i < str.length; i++) {
+    if (specialChar.includes(str.charAt(i))) cleanStr += " ";
+    else cleanStr += str.charAt(i);
   }
- }
+  return cleanStr;
+};
 
- const resultObj = {
-  result: jobsFound,
-  count: jobsFound.length,
- }
- return resultObj;
-}
+const jobsSearching = function (titleStr, locationStr) {
+  const jobsFound = [];
 
-const searchStart = function(inpTitle, inpLocation){
- const title = spacesDelete(specialCharRemove(inpTitle)).toLowerCase();
- const location = spacesDelete(specialCharRemove(inpLocation)).toLowerCase();
- const searchingResult = jobsSearching(title, location);
- 
- if(searchingResult.count===0){
-  alert("\nNessun risultato corrispondente alla ricerca...");
- } else {
-    console.log("\n La ricerca ha prodotto " +
-                 searchingResult.count + " risultati:\n\n");
-    for(let i=0; i<searchingResult.count; i++){
-     console.log(" Title: " + searchingResult.result[i].title +
-                "\n Location: " + searchingResult.result[i].location+ "\n");
+  for (let i = 0; i < jobs.length; i++) {
+    currentTitle = spacesDelete(specialCharRemove(jobs[i].title)).toLowerCase();
+    currentLocation = spacesDelete(
+      specialCharRemove(jobs[i].location)
+    ).toLowerCase();
+
+    if (
+      currentTitle.includes(titleStr) &&
+      currentLocation.includes(locationStr)
+    ) {
+      jobsFound.push(jobs[i]);
     }
- }
-} 
+  }
 
-const takeInput = function(){
- const inputTitle=document.querySelector("input#title").value;
- const inputLocation=document.querySelector("input#location").value;
- 
- if(inputTitle!=="" && inputLocation!==""){
-  searchStart(inputTitle, inputLocation);
- } else {
-   alert("\nPer favore inserire sia 'titolo' che 'regione'!");
- }
-}
+  const resultObj = {
+    result: jobsFound,
+    count: jobsFound.length,
+  };
+  return resultObj;
+};
+
+const searchStart = function (inpTitle, inpLocation) {
+  const title = spacesDelete(specialCharRemove(inpTitle)).toLowerCase();
+  const location = spacesDelete(specialCharRemove(inpLocation)).toLowerCase();
+  const searchingResult = jobsSearching(title, location);
+
+  if (searchingResult.count === 0) {
+    alert("\nNessun risultato corrispondente alla ricerca...");
+  } else {
+    console.log(
+      "\n La ricerca ha prodotto " + searchingResult.count + " risultati:\n\n"
+    );
+    for (let i = 0; i < searchingResult.count; i++) {
+      console.log(
+        " Title: " +
+          searchingResult.result[i].title +
+          "\n Location: " +
+          searchingResult.result[i].location +
+          "\n"
+      );
+    }
+  }
+};
+
+const takeInput = function () {
+  const inputTitle = document.querySelector("input#title").value;
+  const inputLocation = document.querySelector("input#location").value;
+
+  if (inputTitle.trim() !== "" && inputLocation.trim() !== "") {
+    searchStart(inputTitle, inputLocation);
+  } else {
+    alert("\nPer favore inserire sia 'titolo' che 'regione'!");
+  }
+};
 
 const searchBtn = document.querySelector("button");
 searchBtn.addEventListener("click", takeInput);
