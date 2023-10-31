@@ -1,26 +1,14 @@
 /*
-PARTE 1: 
-Oggi analizzeremo un problema molto comune: realizzare algoritmi di ricerca.
-Il tuo compito è creare una funzione che cercherà per posizione lavorativa E posizione geografica. Questi due valori verranno passati come parametri
-Ti abbiamo fornito un array chiamato "jobs" in fondo al file, NON modificarlo in alcun modo.
-L'algoritmo che devi realizzare cercherà SIA per posizione lavorativa che per posizione geografica.
-Prendi queste tre inserzioni ad esempio:
+PARTE 2: 
+Nella pagina HTML, inserisci 2 input di tipo testo (uno per la location e uno per il titolo lavorativo, ricordati di diversificarli con un id) e un bottone con valore “cerca”
 
-      job1:  location: "NY, US",     title: "java dev"
-      job2:  location: "Genoa, IT"   title: "web dev"
-      job3:  location: "US"      title: "dev"
+Al click del bottone, il codice deve raccogliere i valori dei due input e darli in pasto alla funzione che hai creato nella parte 1. 
 
-Cercando contemporaneamente come posizione lavorativa "dev" e posizione geografica "US", dovresti ottenere come risultato solamente job1 e job3,
-in quanto job2 non soddisfa la condizione posta sulla posizione geografica.
+Dopo aver raccolto ed elaborato i dati, e’ il momento di mostrare i risultati sulla pagina: 
+    Puoi scegliere tu se utilizzare un semplice ul / li oppure una tabella 
+    Vai passo per passo e usa molti console.log per capire eventualmente dove sbagli
+    SUGGERIMENTO: ti servira’ un ciclo for!
 
-REQUISITI:
-- il tuo algoritmo deve tornare i risultati nella seguente forma:
-{
-  result: [], <-- inserisci qui le inserzioni che rispecchiano la posizione lavorativa e la posizione geografica richiesta
-  count: 0 <-- inserisci qui il numero totale delle inserzioni trovate
-}
-
-- la tua ricerca deve essere "case insensitive" (non deve essere influenzata da lettere maiuscole o minuscole nelle parole cercate). Questo e' possibile trasformando tutto in lettere minuscole con .toLowerCase()
 */
 
 const jobs = [
@@ -150,15 +138,13 @@ const jobsSearching = function(titleStr, locationStr){
  return resultObj;
 }
 
-const inputTitle="l1";
-const inputLocation="us";
-const title = spacesDelete(specialCharRemove(inputTitle)).toLowerCase();
-const location = spacesDelete(specialCharRemove(inputLocation)).toLowerCase();
-
-if(title!=="" && location!==""){
+const searchStart = function(inpTitle, inpLocation){
+ const title = spacesDelete(specialCharRemove(inpTitle)).toLowerCase();
+ const location = spacesDelete(specialCharRemove(inpLocation)).toLowerCase();
  const searchingResult = jobsSearching(title, location);
+ 
  if(searchingResult.count===0){
-  console.log("\nNessun risultato corrispondente alla ricerca...");
+  alert("\nNessun risultato corrispondente alla ricerca...");
  } else {
     console.log("\n La ricerca ha prodotto " +
                  searchingResult.count + " risultati:\n\n");
@@ -167,6 +153,18 @@ if(title!=="" && location!==""){
                 "\n Location: " + searchingResult.result[i].location+ "\n");
     }
  }
-} else {
-   console.log("\nPer favore inserire sia 'titolo' che 'regione'!");
+} 
+
+const takeInput = function(){
+ const inputTitle=document.querySelector("input#title").value;
+ const inputLocation=document.querySelector("input#location").value;
+ 
+ if(inputTitle!=="" && inputLocation!==""){
+  searchStart(inputTitle, inputLocation);
+ } else {
+   alert("\nPer favore inserire sia 'titolo' che 'regione'!");
+ }
 }
+
+const searchBtn = document.querySelector("button");
+searchBtn.addEventListener("click", takeInput);

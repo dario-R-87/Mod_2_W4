@@ -1,0 +1,38 @@
+body {
+ width: 70%;
+ margin-inline: auto;
+ background-color: gray;
+}
+
+main{
+ background-color: pink;
+ padding-block: 30px;
+}
+
+h1 {
+ text-align: center;
+ color: gray;
+ background-color: pink;
+ padding-block: 10px;
+}
+
+.searchBar{
+ width: 20%;
+ margin-inline: auto;
+ display: flex;
+ flex-direction: column;
+}
+
+.searchBar button{
+ margin-top: 10px;
+  border-radius: 10px;
+}
+
+.searchBar label{
+ color: blue;
+ font-weight: bold;
+}
+
+.searchBar input{
+ border-radius: 10px;
+}
