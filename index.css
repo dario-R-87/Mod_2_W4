@@ -1,18 +1,21 @@
+* {
+  font-family: "Playpen Sans", cursive;
+}
 body {
   width: 70%;
   margin-inline: auto;
-  background-color: rgb(244 240 206);
+  background-color: #dcdcdc;
 }
 
 main {
-  background-color: #8eaaec;
+  background-color: #b0b0b0;
   border-radius: 5px;
 }
 
 h1 {
   text-align: center;
-  color: #2b8586;
-  background-color: #d18cca;
+  color: #64d7d8;
+  background-color: #808080;
   padding-block: 10px;
   border-radius: 5px;
 }
@@ -29,10 +32,10 @@ h1 {
   margin-top: 10px;
   border-radius: 20px;
   padding: 5px;
-  background-color: #d18cca;
-  color: #076012;
+  background-color: #64d7d8;
+  color: #047272;
   font-size: 18px;
-  border: 1px solid #076012;
+  border: 1px solid #047272;
 }
 
 .searchBar button:hover {
@@ -41,7 +44,7 @@ h1 {
 }
 
 .searchBar label {
-  color: #076012;
+  color: #047272;
   font-weight: bold;
   margin-top: 5px;
 }
@@ -55,11 +58,13 @@ h1 {
 
 .searchBar input:focus {
   outline: none;
-  box-shadow: 6px 5px 7px 0px #4a6ce0;
+  box-shadow: 6px 5px 7px 0px #5eaaaa;
 }
 
 .content {
   border-top: 1px solid lightgray;
+  background-color: #c8c8c8;
+  border-radius: 5px;
 }
 
 .items {
@@ -82,10 +87,11 @@ h1 {
   background-color: white;
   border-radius: 10px;
   margin-bottom: 20px;
+  font-size: 12px;
 }
 
 .job_item:hover {
-  box-shadow: 3px 3px 7px 2px lightgray;
+  box-shadow: 3px 3px 7px 2px #5eaaaa;
 }
 
 .job_item span {
@@ -94,8 +100,8 @@ h1 {
 
 .msg {
   font-size: 20px;
-  color: #8d4619;
-  padding-left: 20px;
+  color: #124b4b;
+  padding: 20px;
 }
 
 h2 {

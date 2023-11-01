@@ -149,7 +149,7 @@ const searchStart = function (inpTitle, inpLocation) {
 
   if (searchingResult.count === 0) {
     content.innerHTML = `<p class='msg'>Nessun risultato corrispondente 
-                        alla ricerca...</p>`;
+                        alla ricerca</p>`;
   } else {
     content.innerHTML = `<h2>La ricerca ha prodotto ${searchingResult.count} risultati`;
     content.innerHTML += `<div class="items">`;
@@ -178,7 +178,7 @@ const takeInput = function () {
     searchStart(inputTitle, inputLocation);
   } else {
     console.log(content);
-    content.innerHTML = `<p class='msg'>Per favore inserire sia 'TITOLO' che 'LOCATION'!</p>`;
+    content.innerHTML = `<p class='msg'>Per favore inserire sia 'TITLE' che 'LOCATION'!</p>`;
   }
 };
 
