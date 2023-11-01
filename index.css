@@ -65,7 +65,10 @@ h1 {
 .items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  gap: 20px;
+  justify-content: flex-start;
+  width: 90%;
+  margin-inline: auto;
 }
 
 .job_item {
@@ -79,6 +82,14 @@ h1 {
   background-color: white;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+.job_item:hover {
+  box-shadow: 3px 3px 7px 2px lightgray;
+}
+
+.job_item span {
+  font-weight: bold;
 }
 
 .msg {

@@ -157,11 +157,11 @@ const searchStart = function (inpTitle, inpLocation) {
     for (let i = 0; i < searchingResult.count; i++) {
       items.innerHTML += `<div class="job_item">
                             <div>
-                            Title
+                            <span>Title</span>
                             <div>${searchingResult.result[i].title}</div>    
                             </div>
                             <div>                  
-                            Location  
+                            <span>Location</span>  
                             <div>${searchingResult.result[i].location}</div> 
                             </div>
                           </div>`;
