@@ -140,26 +140,33 @@ const jobsSearching = function (titleStr, locationStr) {
   return resultObj;
 };
 
+const content = document.querySelector(".content");
+
 const searchStart = function (inpTitle, inpLocation) {
   const title = spacesDelete(specialCharRemove(inpTitle)).toLowerCase();
   const location = spacesDelete(specialCharRemove(inpLocation)).toLowerCase();
   const searchingResult = jobsSearching(title, location);
 
   if (searchingResult.count === 0) {
-    alert("\nNessun risultato corrispondente alla ricerca...");
+    content.innerHTML = `<p class='msg'>Nessun risultato corrispondente 
+                        alla ricerca...</p>`;
   } else {
-    console.log(
-      "\n La ricerca ha prodotto " + searchingResult.count + " risultati:\n\n"
-    );
+    content.innerHTML = `<h2>La ricerca ha prodotto ${searchingResult.count} risultati`;
+    content.innerHTML += `<div class="items">`;
+    const items = document.querySelector(".items");
     for (let i = 0; i < searchingResult.count; i++) {
-      console.log(
-        " Title: " +
-          searchingResult.result[i].title +
-          "\n Location: " +
-          searchingResult.result[i].location +
-          "\n"
-      );
+      items.innerHTML += `<div class="job_item">
+                            <div>
+                            Title
+                            <div>${searchingResult.result[i].title}</div>    
+                            </div>
+                            <div>                  
+                            Location  
+                            <div>${searchingResult.result[i].location}</div> 
+                            </div>
+                          </div>`;
     }
+    content.innerHTML += `</div>`;
   }
 };
 
@@ -170,7 +177,8 @@ const takeInput = function () {
   if (inputTitle.trim() !== "" && inputLocation.trim() !== "") {
     searchStart(inputTitle, inputLocation);
   } else {
-    alert("\nPer favore inserire sia 'titolo' che 'regione'!");
+    console.log(content);
+    content.innerHTML = `<p class='msg'>Per favore inserire sia 'TITOLO' che 'LOCATION'!</p>`;
   }
 };
 

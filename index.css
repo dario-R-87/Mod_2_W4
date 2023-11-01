@@ -7,7 +7,6 @@ body {
 main {
   background-color: #8eaaec;
   border-radius: 5px;
-  height: 100vh;
 }
 
 h1 {
@@ -49,7 +48,8 @@ h1 {
 
 .searchBar input {
   border-radius: 20px;
-  padding: 5px;
+  padding-block: 5px;
+  padding-inline: 10px;
   border: none;
 }
 
@@ -60,4 +60,34 @@ h1 {
 
 .content {
   border-top: 1px solid lightgray;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.job_item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 150px;
+  height: 150px;
+  padding-block: 20px;
+  padding-inline: 20px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.msg {
+  font-size: 20px;
+  color: #8d4619;
+  padding-left: 20px;
+}
+
+h2 {
+  color: #2b8586;
+  padding-left: 20px;
 }
