@@ -1,6 +1,7 @@
 * {
   font-family: "Playpen Sans", cursive;
 }
+
 body {
   width: 70%;
   margin-inline: auto;
@@ -56,6 +57,10 @@ h1 {
   border: none;
 }
 
+.searchBar input.input_error {
+  border: 1px solid red;
+}
+
 .searchBar input:focus {
   outline: none;
   box-shadow: 6px 5px 7px 0px #5eaaaa;
@@ -102,6 +107,11 @@ h1 {
   font-size: 20px;
   color: #124b4b;
   padding: 20px;
+}
+
+.msg span {
+  color: red;
+  font-weight: bold;
 }
 
 h2 {

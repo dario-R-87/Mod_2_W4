@@ -171,14 +171,21 @@ const searchStart = function (inpTitle, inpLocation) {
 };
 
 const takeInput = function () {
-  const inputTitle = document.querySelector("input#title").value;
-  const inputLocation = document.querySelector("input#location").value;
+  const inputTitle = document.querySelector("input#title");
+  const inputLocation = document.querySelector("input#location");
 
-  if (inputTitle.trim() !== "" && inputLocation.trim() !== "") {
-    searchStart(inputTitle, inputLocation);
+  if (inputTitle.value.trim() !== "" && inputLocation.value.trim() !== "") {
+    inputLocation.classList.remove("input_error");
+    inputTitle.classList.remove("input_error");
+    searchStart(inputTitle.value, inputLocation.value);
   } else {
-    console.log(content);
-    content.innerHTML = `<p class='msg'>Per favore inserire sia 'TITLE' che 'LOCATION'!</p>`;
+    content.innerHTML = `<p class='msg'><span>*</span>Per favore inserire sia 'TITLE' che 'LOCATION'!</p>`;
+    if (inputTitle.value.trim() === "") {
+      inputTitle.classList.add("input_error");
+    }
+    if (inputLocation.value.trim() === "") {
+      inputLocation.classList.add("input_error");
+    }
   }
 };
 
