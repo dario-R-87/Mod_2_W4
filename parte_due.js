@@ -173,10 +173,10 @@ const searchStart = function (inpTitle, inpLocation) {
 const takeInput = function () {
   const inputTitle = document.querySelector("input#title");
   const inputLocation = document.querySelector("input#location");
+  inputLocation.classList.remove("input_error");
+  inputTitle.classList.remove("input_error");
 
   if (inputTitle.value.trim() !== "" && inputLocation.value.trim() !== "") {
-    inputLocation.classList.remove("input_error");
-    inputTitle.classList.remove("input_error");
     searchStart(inputTitle.value, inputLocation.value);
   } else {
     content.innerHTML = `<p class='msg'><span>*</span>Per favore inserire sia 'TITLE' che 'LOCATION'!</p>`;
